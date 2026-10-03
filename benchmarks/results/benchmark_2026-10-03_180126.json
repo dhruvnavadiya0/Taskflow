@@ -1,0 +1,321 @@
+{
+  "suite_timestamp": "2026-10-03_180126",
+  "environment": {
+    "os": "Windows",
+    "os_release": "11",
+    "architecture": "AMD64",
+    "python_version": "3.12.0",
+    "cpu_count_logical": 24,
+    "total_memory_gb": 15.61,
+    "git_commit": "uncommitted"
+  },
+  "workload": {
+    "name": "light",
+    "job_type": "SUM_NUMBERS",
+    "priority": "NORMAL",
+    "default_payload": {
+      "numbers": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10
+      ]
+    }
+  },
+  "configuration": {
+    "worker_counts": [
+      1,
+      2,
+      4,
+      8
+    ],
+    "jobs_per_run": 100,
+    "concurrency": 20,
+    "runs_per_config": 1,
+    "warmup_seconds": 3.0
+  },
+  "results": [
+    {
+      "workers": 1,
+      "jobs": 100,
+      "concurrency": 20,
+      "duration_seconds": 3.08,
+      "throughput_jobs_sec": 32.43,
+      "latency_p50": 1.6803,
+      "latency_p95": 2.2102,
+      "latency_p99": 2.4878,
+      "scaling_efficiency": 1.0,
+      "cpu_avg_percent": 18.19,
+      "mem_avg_mb": 12653.69,
+      "runs": [
+        {
+          "job_type": "SUM_NUMBERS",
+          "priority": "NORMAL",
+          "concurrency": 20,
+          "submitted_jobs": 100,
+          "submission_failures": 0,
+          "completed_jobs": 100,
+          "failed_jobs": 0,
+          "timed_out_jobs": 0,
+          "duration_seconds": 3.084,
+          "submission_duration_seconds": 1.748,
+          "throughput": {
+            "jobs_per_sec": 32.43,
+            "jobs_per_min": 1945.52
+          },
+          "end_to_end_latency": {
+            "min": 1.2544,
+            "mean": 1.7447,
+            "median": 1.6803,
+            "p50": 1.6803,
+            "p90": 2.0254,
+            "p95": 2.2102,
+            "p99": 2.4878,
+            "max": 2.7466
+          },
+          "queue_wait_time": {
+            "min": 0.0229,
+            "mean": 0.329,
+            "median": 0.3175,
+            "p50": 0.3175,
+            "p90": 0.5164,
+            "p95": 0.5296,
+            "p99": 0.5678,
+            "max": 0.5816
+          },
+          "execution_time": {
+            "min": 0.0058,
+            "mean": 0.0111,
+            "median": 0.0101,
+            "p50": 0.0101,
+            "p90": 0.0155,
+            "p95": 0.0216,
+            "p99": 0.0285,
+            "max": 0.0301
+          },
+          "resources": {
+            "cpu_percent_avg": 18.19,
+            "cpu_percent_max": 28.8,
+            "memory_used_mb_avg": 12653.69,
+            "memory_used_mb_max": 12668.28,
+            "redis_memory_kb_avg": 1444.37,
+            "redis_ops_sec_max": 608
+          }
+        }
+      ]
+    },
+    {
+      "workers": 2,
+      "jobs": 100,
+      "concurrency": 20,
+      "duration_seconds": 4.04,
+      "throughput_jobs_sec": 24.75,
+      "latency_p50": 2.629,
+      "latency_p95": 3.1291,
+      "latency_p99": 3.3465,
+      "scaling_efficiency": 0.3816,
+      "cpu_avg_percent": 20.09,
+      "mem_avg_mb": 12740.94,
+      "runs": [
+        {
+          "job_type": "SUM_NUMBERS",
+          "priority": "NORMAL",
+          "concurrency": 20,
+          "submitted_jobs": 100,
+          "submission_failures": 0,
+          "completed_jobs": 100,
+          "failed_jobs": 0,
+          "timed_out_jobs": 0,
+          "duration_seconds": 4.041,
+          "submission_duration_seconds": 2.49,
+          "throughput": {
+            "jobs_per_sec": 24.75,
+            "jobs_per_min": 1484.91
+          },
+          "end_to_end_latency": {
+            "min": 1.7972,
+            "mean": 2.6012,
+            "median": 2.629,
+            "p50": 2.629,
+            "p90": 2.9755,
+            "p95": 3.1291,
+            "p99": 3.3465,
+            "max": 3.4919
+          },
+          "queue_wait_time": {
+            "min": 0.0052,
+            "mean": 0.0768,
+            "median": 0.0588,
+            "p50": 0.0588,
+            "p90": 0.1787,
+            "p95": 0.1964,
+            "p99": 0.2232,
+            "max": 0.2423
+          },
+          "execution_time": {
+            "min": 0.008,
+            "mean": 0.0153,
+            "median": 0.0117,
+            "p50": 0.0117,
+            "p90": 0.0291,
+            "p95": 0.0315,
+            "p99": 0.0401,
+            "max": 0.0597
+          },
+          "resources": {
+            "cpu_percent_avg": 20.09,
+            "cpu_percent_max": 29.9,
+            "memory_used_mb_avg": 12740.94,
+            "memory_used_mb_max": 12764.69,
+            "redis_memory_kb_avg": 1461.1,
+            "redis_ops_sec_max": 513
+          }
+        }
+      ]
+    },
+    {
+      "workers": 4,
+      "jobs": 100,
+      "concurrency": 20,
+      "duration_seconds": 2.46,
+      "throughput_jobs_sec": 40.73,
+      "latency_p50": 1.6045,
+      "latency_p95": 2.0704,
+      "latency_p99": 2.1282,
+      "scaling_efficiency": 0.314,
+      "cpu_avg_percent": 35.38,
+      "mem_avg_mb": 12973.33,
+      "runs": [
+        {
+          "job_type": "SUM_NUMBERS",
+          "priority": "NORMAL",
+          "concurrency": 20,
+          "submitted_jobs": 100,
+          "submission_failures": 0,
+          "completed_jobs": 100,
+          "failed_jobs": 0,
+          "timed_out_jobs": 0,
+          "duration_seconds": 2.455,
+          "submission_duration_seconds": 1.84,
+          "throughput": {
+            "jobs_per_sec": 40.73,
+            "jobs_per_min": 2443.51
+          },
+          "end_to_end_latency": {
+            "min": 0.9245,
+            "mean": 1.5487,
+            "median": 1.6045,
+            "p50": 1.6045,
+            "p90": 2.0038,
+            "p95": 2.0704,
+            "p99": 2.1282,
+            "max": 2.2067
+          },
+          "queue_wait_time": {
+            "min": 0.0046,
+            "mean": 0.039,
+            "median": 0.0211,
+            "p50": 0.0211,
+            "p90": 0.0946,
+            "p95": 0.117,
+            "p99": 0.146,
+            "max": 0.1617
+          },
+          "execution_time": {
+            "min": 0.0085,
+            "mean": 0.0164,
+            "median": 0.013,
+            "p50": 0.013,
+            "p90": 0.0275,
+            "p95": 0.0327,
+            "p99": 0.0515,
+            "max": 0.0542
+          },
+          "resources": {
+            "cpu_percent_avg": 35.38,
+            "cpu_percent_max": 100.0,
+            "memory_used_mb_avg": 12973.33,
+            "memory_used_mb_max": 12994.77,
+            "redis_memory_kb_avg": 1543.25,
+            "redis_ops_sec_max": 578
+          }
+        }
+      ]
+    },
+    {
+      "workers": 8,
+      "jobs": 100,
+      "concurrency": 20,
+      "duration_seconds": 2.91,
+      "throughput_jobs_sec": 34.4,
+      "latency_p50": 1.6501,
+      "latency_p95": 2.356,
+      "latency_p99": 2.5627,
+      "scaling_efficiency": 0.1326,
+      "cpu_avg_percent": 20.57,
+      "mem_avg_mb": 13288.84,
+      "runs": [
+        {
+          "job_type": "SUM_NUMBERS",
+          "priority": "NORMAL",
+          "concurrency": 20,
+          "submitted_jobs": 100,
+          "submission_failures": 0,
+          "completed_jobs": 100,
+          "failed_jobs": 0,
+          "timed_out_jobs": 0,
+          "duration_seconds": 2.907,
+          "submission_duration_seconds": 2.121,
+          "throughput": {
+            "jobs_per_sec": 34.4,
+            "jobs_per_min": 2064.24
+          },
+          "end_to_end_latency": {
+            "min": 1.0654,
+            "mean": 1.7412,
+            "median": 1.6501,
+            "p50": 1.6501,
+            "p90": 2.2839,
+            "p95": 2.356,
+            "p99": 2.5627,
+            "max": 2.6679
+          },
+          "queue_wait_time": {
+            "min": 0.0051,
+            "mean": 0.0309,
+            "median": 0.0246,
+            "p50": 0.0246,
+            "p90": 0.063,
+            "p95": 0.0698,
+            "p99": 0.0803,
+            "max": 0.0842
+          },
+          "execution_time": {
+            "min": 0.0094,
+            "mean": 0.0213,
+            "median": 0.0192,
+            "p50": 0.0192,
+            "p90": 0.0319,
+            "p95": 0.0396,
+            "p99": 0.0426,
+            "max": 0.0489
+          },
+          "resources": {
+            "cpu_percent_avg": 20.57,
+            "cpu_percent_max": 37.0,
+            "memory_used_mb_avg": 13288.84,
+            "memory_used_mb_max": 13296.65,
+            "redis_memory_kb_avg": 1633.75,
+            "redis_ops_sec_max": 525
+          }
+        }
+      ]
+    }
+  ]
+}

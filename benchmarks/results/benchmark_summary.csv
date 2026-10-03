@@ -1,0 +1,5 @@
+timestamp,workload,workers,jobs,concurrency,duration_seconds,throughput_jobs_sec,latency_p50,latency_p95,latency_p99,scaling_efficiency,cpu_avg_percent,mem_avg_mb,git_commit
+2026-10-03_180126,light,1,100,20,3.08,32.43,1.6803,2.2102,2.4878,1.0,18.19,12653.69,uncommitted
+2026-10-03_180126,light,2,100,20,4.04,24.75,2.629,3.1291,3.3465,0.3816,20.09,12740.94,uncommitted
+2026-10-03_180126,light,4,100,20,2.46,40.73,1.6045,2.0704,2.1282,0.314,35.38,12973.33,uncommitted
+2026-10-03_180126,light,8,100,20,2.91,34.4,1.6501,2.356,2.5627,0.1326,20.57,13288.84,uncommitted

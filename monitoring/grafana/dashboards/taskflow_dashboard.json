@@ -1,0 +1,327 @@
+{
+  "annotations": {
+    "list": []
+  },
+  "editable": true,
+  "fiscalYearStartMonth": 0,
+  "graphTooltip": 1,
+  "id": null,
+  "links": [],
+  "liveNow": true,
+  "panels": [
+    {
+      "collapsed": false,
+      "gridPos": { "h": 1, "w": 24, "x": 0, "y": 0 },
+      "id": 100,
+      "title": "System Overview",
+      "type": "row"
+    },
+    {
+      "id": 1,
+      "title": "Jobs Submitted",
+      "type": "stat",
+      "gridPos": { "h": 4, "w": 4, "x": 0, "y": 1 },
+      "datasource": "Prometheus",
+      "targets": [
+        {
+          "expr": "taskflow_jobs_submitted_total",
+          "legendFormat": "Submitted"
+        }
+      ],
+      "options": {
+        "colorMode": "value",
+        "graphMode": "none",
+        "justifyMode": "auto"
+      }
+    },
+    {
+      "id": 2,
+      "title": "Jobs Completed",
+      "type": "stat",
+      "gridPos": { "h": 4, "w": 5, "x": 4, "y": 1 },
+      "datasource": "Prometheus",
+      "targets": [
+        {
+          "expr": "taskflow_jobs_completed_total",
+          "legendFormat": "Completed"
+        }
+      ],
+      "options": {
+        "colorMode": "value",
+        "graphMode": "none",
+        "justifyMode": "auto"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "color": { "mode": "fixed", "fixedColor": "green" }
+        }
+      }
+    },
+    {
+      "id": 3,
+      "title": "Jobs Failed (DLQ)",
+      "type": "stat",
+      "gridPos": { "h": 4, "w": 5, "x": 9, "y": 1 },
+      "datasource": "Prometheus",
+      "targets": [
+        {
+          "expr": "taskflow_jobs_failed_total",
+          "legendFormat": "Failed"
+        }
+      ],
+      "options": {
+        "colorMode": "value",
+        "graphMode": "none",
+        "justifyMode": "auto"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "color": { "mode": "fixed", "fixedColor": "red" }
+        }
+      }
+    },
+    {
+      "id": 4,
+      "title": "Retries Scheduled",
+      "type": "stat",
+      "gridPos": { "h": 4, "w": 5, "x": 14, "y": 1 },
+      "datasource": "Prometheus",
+      "targets": [
+        {
+          "expr": "taskflow_jobs_retried_total",
+          "legendFormat": "Retried"
+        }
+      ],
+      "options": {
+        "colorMode": "value",
+        "graphMode": "none",
+        "justifyMode": "auto"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "color": { "mode": "fixed", "fixedColor": "orange" }
+        }
+      }
+    },
+    {
+      "id": 5,
+      "title": "Jobs Recovered",
+      "type": "stat",
+      "gridPos": { "h": 4, "w": 5, "x": 19, "y": 1 },
+      "datasource": "Prometheus",
+      "targets": [
+        {
+          "expr": "taskflow_jobs_recovered_total",
+          "legendFormat": "Recovered"
+        }
+      ],
+      "options": {
+        "colorMode": "value",
+        "graphMode": "none",
+        "justifyMode": "auto"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "color": { "mode": "fixed", "fixedColor": "purple" }
+        }
+      }
+    },
+    {
+      "collapsed": false,
+      "gridPos": { "h": 1, "w": 24, "x": 0, "y": 5 },
+      "id": 101,
+      "title": "Throughput & Active Workers",
+      "type": "row"
+    },
+    {
+      "id": 6,
+      "title": "Completed Jobs Throughput (jobs/sec)",
+      "type": "timeseries",
+      "gridPos": { "h": 8, "w": 14, "x": 0, "y": 6 },
+      "datasource": "Prometheus",
+      "targets": [
+        {
+          "expr": "sum(rate(taskflow_jobs_completed_total[30s]))",
+          "legendFormat": "Throughput (jobs/s)"
+        },
+        {
+          "expr": "sum(rate(taskflow_jobs_submitted_total[30s]))",
+          "legendFormat": "Submission Rate (jobs/s)"
+        }
+      ],
+      "fieldConfig": {
+        "defaults": {
+          "unit": "reqps",
+          "custom": {
+            "lineWidth": 2,
+            "fillOpacity": 15
+          }
+        }
+      }
+    },
+    {
+      "id": 7,
+      "title": "Worker Status",
+      "type": "timeseries",
+      "gridPos": { "h": 8, "w": 10, "x": 14, "y": 6 },
+      "datasource": "Prometheus",
+      "targets": [
+        {
+          "expr": "taskflow_workers_online",
+          "legendFormat": "Online Workers"
+        },
+        {
+          "expr": "taskflow_workers_dead",
+          "legendFormat": "Dead Workers"
+        },
+        {
+          "expr": "taskflow_worker_jobs_active",
+          "legendFormat": "Active Jobs"
+        }
+      ],
+      "fieldConfig": {
+        "defaults": {
+          "unit": "short",
+          "custom": {
+            "lineWidth": 2
+          }
+        }
+      }
+    },
+    {
+      "collapsed": false,
+      "gridPos": { "h": 1, "w": 24, "x": 0, "y": 14 },
+      "id": 102,
+      "title": "Queue Depths & Latency",
+      "type": "row"
+    },
+    {
+      "id": 8,
+      "title": "Queue Depths by Priority",
+      "type": "timeseries",
+      "gridPos": { "h": 8, "w": 12, "x": 0, "y": 15 },
+      "datasource": "Prometheus",
+      "targets": [
+        {
+          "expr": "taskflow_queue_depth{priority=\"high\"}",
+          "legendFormat": "High Priority"
+        },
+        {
+          "expr": "taskflow_queue_depth{priority=\"normal\"}",
+          "legendFormat": "Normal Priority"
+        },
+        {
+          "expr": "taskflow_queue_depth{priority=\"low\"}",
+          "legendFormat": "Low Priority"
+        },
+        {
+          "expr": "taskflow_queue_depth{priority=\"dead\"}",
+          "legendFormat": "Dead Letter Queue"
+        }
+      ],
+      "fieldConfig": {
+        "defaults": {
+          "unit": "short",
+          "custom": {
+            "lineWidth": 2,
+            "fillOpacity": 10
+          }
+        }
+      }
+    },
+    {
+      "id": 9,
+      "title": "Processing Execution Latency (seconds)",
+      "type": "timeseries",
+      "gridPos": { "h": 8, "w": 12, "x": 12, "y": 15 },
+      "datasource": "Prometheus",
+      "targets": [
+        {
+          "expr": "histogram_quantile(0.50, sum(rate(taskflow_job_processing_duration_seconds_bucket[1m])) by (le))",
+          "legendFormat": "P50 Latency"
+        },
+        {
+          "expr": "histogram_quantile(0.95, sum(rate(taskflow_job_processing_duration_seconds_bucket[1m])) by (le))",
+          "legendFormat": "P95 Latency"
+        },
+        {
+          "expr": "histogram_quantile(0.99, sum(rate(taskflow_job_processing_duration_seconds_bucket[1m])) by (le))",
+          "legendFormat": "P99 Latency"
+        }
+      ],
+      "fieldConfig": {
+        "defaults": {
+          "unit": "s",
+          "custom": {
+            "lineWidth": 2
+          }
+        }
+      }
+    },
+    {
+      "id": 10,
+      "title": "Queue Wait Time (seconds)",
+      "type": "timeseries",
+      "gridPos": { "h": 8, "w": 12, "x": 0, "y": 23 },
+      "datasource": "Prometheus",
+      "targets": [
+        {
+          "expr": "histogram_quantile(0.50, sum(rate(taskflow_job_queue_wait_seconds_bucket[1m])) by (le))",
+          "legendFormat": "P50 Wait"
+        },
+        {
+          "expr": "histogram_quantile(0.95, sum(rate(taskflow_job_queue_wait_seconds_bucket[1m])) by (le))",
+          "legendFormat": "P95 Wait"
+        },
+        {
+          "expr": "histogram_quantile(0.99, sum(rate(taskflow_job_queue_wait_seconds_bucket[1m])) by (le))",
+          "legendFormat": "P99 Wait"
+        }
+      ],
+      "fieldConfig": {
+        "defaults": {
+          "unit": "s",
+          "custom": {
+            "lineWidth": 2
+          }
+        }
+      }
+    },
+    {
+      "id": 11,
+      "title": "Database Connection Pool",
+      "type": "timeseries",
+      "gridPos": { "h": 8, "w": 12, "x": 12, "y": 23 },
+      "datasource": "Prometheus",
+      "targets": [
+        {
+          "expr": "taskflow_db_pool_connections",
+          "legendFormat": "Total Connections"
+        },
+        {
+          "expr": "taskflow_db_pool_available",
+          "legendFormat": "Available Connections"
+        }
+      ],
+      "fieldConfig": {
+        "defaults": {
+          "unit": "short",
+          "custom": {
+            "lineWidth": 2
+          }
+        }
+      }
+    }
+  ],
+  "refresh": "5s",
+  "schemaVersion": 39,
+  "style": "dark",
+  "tags": ["taskflow", "jobs", "observability"],
+  "time": {
+    "from": "now-15m",
+    "to": "now"
+  },
+  "title": "TaskFlow Performance & Observability",
+  "uid": "taskflow-dashboard",
+  "version": 1
+}
